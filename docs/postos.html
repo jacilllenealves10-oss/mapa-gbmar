@@ -3,14 +3,29 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#121d2a">
-<title>GBMar | Localização dos Postos de Guarda-Vidas · v2</title>
+<title>GBMar | Localização dos Postos de Guarda-Vidas · v3</title>
 <meta name="description" content="Mapa de referência com 16 postos de guarda-vidas do GBMar/CBMPE em Olinda, Recife e Jaboatão.">
 <link rel="preconnect" href="https://unpkg.com">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="./assets/leaflet-1.9.4.css">
+
 <style>
 :root{font-family:Inter,"Segoe UI",Arial,sans-serif;color:#24364a;background:#f3f6fa}*{box-sizing:border-box}body{margin:0}a{color:#a32a35}button,input{font:inherit}button{cursor:pointer}.top{background:linear-gradient(120deg,#101d2b,#24364a);color:white;padding:20px clamp(16px,3vw,38px);border-top:5px solid #b52c3b;display:flex;justify-content:space-between;gap:18px;align-items:center}.top small{color:#b6c4d2;font-size:11px;letter-spacing:1.9px;font-weight:800}.top h1{margin:5px 0 3px;font-size:clamp(20px,2.5vw,28px);letter-spacing:-.7px}.top p{margin:0;color:#d5dde5;font-size:13px}.brand{display:flex;align-items:center;gap:15px}.crest{height:54px;width:54px;display:grid;place-items:center;border:2px solid #d5b478;border-radius:14px;font-size:18px;font-weight:900;color:#f2d49b;background:#2c3442}.top-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.btn{border:1px solid #ccd6e1;background:white;color:#273a4f;border-radius:9px;padding:10px 13px;font-size:12px;font-weight:700;text-decoration:none}.btn:hover{filter:brightness(.96)}.top .btn{background:#233b51;border:1px solid #547086;color:white}.warning{background:#fff8e7;border-bottom:1px solid #f2e0b2;padding:12px clamp(16px,3vw,38px);font-size:12px;line-height:1.5;color:#6e5323}.warning strong{color:#69430a}.layout{display:grid;grid-template-columns:minmax(335px,405px) minmax(0,1fr);min-height:calc(100vh - 186px)}.sidebar{padding:20px 18px 16px 24px;background:white;border-right:1px solid #dbe3eb;max-height:calc(100vh - 182px);overflow:auto}.sidebar h2{font-size:17px;margin:0 0 4px}.sub{color:#68798b;font-size:12px;margin:0 0 14px;line-height:1.45}.search{width:100%;border:1px solid #d7e0e7;padding:12px 13px;border-radius:10px;background:#f8fafc;outline-color:#b52c3b}.filters{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 14px}.chip{font-size:11px;border:1px solid #d6dfe8;border-radius:99px;background:#fff;padding:8px 11px;color:#39506a;font-weight:700}.chip.active{color:#fff;background:#a72f3b;border-color:#a72f3b}.station{border:1px solid #e1e8ef;border-left:4px solid var(--city,#a72f3b);border-radius:10px;padding:11px 12px;margin:7px 0;background:#fff;box-shadow:0 1px 4px #1a28480a}.station.sel{background:#f7fafc;border-color:#9baebd;border-left-color:var(--city)}.station-row{display:flex;justify-content:space-between;gap:12px}.station strong{font-size:13px}.station small{display:block;color:#697b8c;margin-top:3px;font-size:11px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:9px}.actions button,.actions a{font-size:11px;border:0;background:transparent;padding:0;color:#a72f3b;font-weight:800;text-decoration:none}.actions .gray{color:#4c6073}.number{display:inline-grid;place-items:center;border-radius:6px;background:#eff2f6;color:#2b4258;height:27px;min-width:31px;font-size:11px;font-weight:900}.map-area{position:relative;background:#d9e5ec}#map{width:100%;height:calc(100vh - 182px);min-height:450px}.floating{position:absolute;z-index:450;top:18px;right:18px;background:white;color:#4d6375;box-shadow:0 4px 24px #14263a20;border-radius:10px;padding:10px 12px;font-size:11px;max-width:235px}.legend-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin:0 5px 0 12px}.legend-dot:first-child{margin-left:0}.leaflet-container{font-family:inherit}.leaflet-popup-content{min-width:190px}.leaflet-popup-content strong{font-size:14px}.popup-links{display:flex;gap:10px;margin-top:10px;font-size:12px}.popup-links a{font-weight:800}.pin{width:31px;height:31px;display:grid;place-items:center;border-radius:50% 50% 50% 3px;transform:rotate(-45deg);color:white;border:2px solid white;box-shadow:0 2px 8px #0d233b88}.pin span{transform:rotate(45deg);font:800 11px Arial}.leaflet-tooltip{border-radius:5px;font-size:11px;font-weight:700}.foot{padding:12px clamp(16px,3vw,38px);background:#eef2f6;color:#667688;font-size:11px;line-height:1.5}.foot a{font-weight:700}.empty{font-size:13px;color:#738090;padding:12px}.sr{position:absolute;left:-10000px}@media(max-width:900px){.layout{display:flex;flex-direction:column}.map-area{order:0}#map{height:52vh;min-height:345px}.sidebar{order:1;max-height:none;overflow:visible;padding:18px}.floating{top:9px;right:8px;font-size:10px;padding:7px;max-width:180px}.top{padding:14px 16px;flex-direction:column;align-items:stretch}.crest{width:43px;height:43px;font-size:15px}.top-actions{display:flex;flex-wrap:wrap;gap:6px}.top-actions .btn{flex:1;min-width:105px;text-align:center;padding:9px 8px}.warning{padding:10px 16px}}@media print{.top-actions,.sidebar .search,.filters,.actions,.floating{display:none!important}.layout{display:block}.sidebar{max-height:none;border:0}#map{height:450px}.station{break-inside:avoid}.top{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
-</style>
+
+/* v3 mobile containment */
+html,body{max-width:100%;overflow-x:hidden}
+.layout,.map-area,.sidebar{min-width:0}
+.map-area{isolation:isolate;overflow:hidden;contain:layout paint;min-width:0}
+#map{position:relative;display:block;overflow:hidden;isolation:isolate;z-index:0;max-width:100%;touch-action:pan-y;overscroll-behavior:contain}
+#map .leaflet-container{max-width:100%}
+.floating{pointer-events:none;z-index:801}
+@media(max-width:900px){
+  .map-area{width:100%;max-width:100%;height:clamp(330px,47svh,510px);flex:0 0 auto}
+  #map{width:100%;height:100%;min-height:0}
+  .layout{width:100%;min-height:0;overflow:visible}
+  .sidebar{width:100%;max-width:100%;position:relative;z-index:1;background:#fff}
+  #map .leaflet-control-zoom{display:none}
+  .floating{top:8px;right:8px}
+}</style>
 </head>
 <body>
 <header class="top"><div class="brand"><div class="crest" aria-hidden="true">BM</div><div><small>CBMPE · GRUPAMENTO DE BOMBEIROS MARÍTIMO</small><h1>Localização dos postos de guarda-vidas</h1><p>Atlas de consulta geográfica · 16 referências · revisão 13/10/2026</p></div></div><div class="top-actions"><button class="btn" id="me">◎ Minha localização</button><button class="btn" id="whole">↗ Ver todos</button><button class="btn" onclick="window.print()">Imprimir / PDF</button></div></header>
@@ -41,7 +56,8 @@ function showEmbed(p){
 }
 try{
 if(!window.L)throw Error("Biblioteca do mapa não carregada");
-map=L.map("map",{scrollWheelZoom:false,zoomControl:true}).setView([-8.111,-34.89],11);
+const touchDevice=window.matchMedia("(pointer: coarse)").matches;
+map=L.map("map",{scrollWheelZoom:false,zoomControl:true,dragging:!touchDevice,touchZoom:!touchDevice,doubleClickZoom:!touchDevice,boxZoom:!touchDevice,keyboard:!touchDevice,trackResize:true}).setView([-8.111,-34.89],11);
 let tileErrors=0;
 const base=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'}).addTo(map);
 base.on('tileerror',()=>{if(++tileErrors===4){map.removeLayer(base);const alt=L.tileLayer('https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(map);let err=0;alt.on('tileerror',()=>{if(++err===4)showEmbed(pts.find(p=>p.id===selected));});}});
@@ -53,6 +69,7 @@ pts.forEach(p=>{
  mk.on("click",()=>{selected=p.id;render()});markers.push(mk)
 });
 map.fitBounds(L.latLngBounds(pts.map(p=>[p.lat,p.lon])),{padding:[45,45]});
+requestAnimationFrame(()=>map.invalidateSize({pan:false}));
 }catch(e){console.warn("GBMar mapa interativo indisponível; usando visualização alternativa.",e);showEmbed(null);}
 function render(){
  const list=pts.filter(p=>(filter==="Todas"||p.city===filter)&&(!query||("Posto "+p.num+" "+p.name+" "+p.city).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().includes(query)));
