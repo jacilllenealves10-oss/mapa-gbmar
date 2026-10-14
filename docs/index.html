@@ -49,6 +49,35 @@ button.dashboard-publish-button[aria-label="Publish changes"],
 .gb-author-panel p { margin: 0 0 8px; }
 .gb-author-panel p:last-child { margin-bottom: 0; }
 </style>
+<style id="gbmar-readable-themes">
+/* Primeiro acesso: Original claro. A opção Escuro continua disponível. */
+:root:not([data-app-appearance="dark"]):is(:not([data-app-theme]),[data-app-theme="original"]) {
+  --fixed-theme-scheme: light;
+  color-scheme: light;
+}
+/* O token muted é fundo; não deve ser usado como tinta. */
+:root { --secondary: var(--text) !important; }
+.gb-note, .gb-record small, .gb-metrics span, .gb-compact small,
+.gb-record > b { color: var(--text) !important; }
+.gb-body a, .gb-record a, .source-links a, .source-pill[href]:hover, .notes a {
+  color: var(--text); text-decoration: underline; text-underline-offset: 2px;
+}
+.theme-preview-type > span { color: var(--preview-text); }
+/* Textos operacionais pequenos: leitura mínima de 12 px, inclusive no celular. */
+.gb-note, .gb-legend, .gb-field, .gb-check, .gb-metrics span,
+.gb-method, .gb-app table, .gb-app th, .gb-record small,
+.gb-compact span, .gb-compact small, .gb-mapnotice { font-size: 12px; }
+.gb-record small { line-height: 1.6; }
+/* Rótulos sobre o mapa precisam de fundo opaco, pois a imagem varia. */
+.gb-count { color: #fff; background: #163c4d; border-radius: 4px;
+  font-size: 12px; line-height: 16px; text-shadow: none; }
+.gb-post-marker span, .gb-postsample { font-size: 11px; }
+.gb-mapnotice { background: #fff5df; color: #6d541c; }
+.gb-map .leaflet-control-attribution, .gb-map .leaflet-control-scale-line {
+  background: #fff; color: #333; text-shadow: none;
+}
+.gb-map .leaflet-control-attribution a { color: #005a7a; }
+</style>
 </head>
 <body>
 <div id="root"></div>

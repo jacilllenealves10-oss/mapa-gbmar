@@ -1,0 +1,574 @@
+{
+  "method": "Razão de luminância sRGB; cores dos temas extraídas do runtime entregue. Não é inspeção visual nem auditoria WCAG integral.",
+  "threshold": 4.5,
+  "themeResults": [
+    {
+      "theme": "original",
+      "label": "Original theme",
+      "scheme": "light",
+      "oldOperationalNoteRatio": 1.0442138066859268,
+      "oldSecondarySurfaceRatio": 4.4273511836553485,
+      "correctedMinimumRatio": 15.253141426998662,
+      "pairs": [
+        {
+          "background": "background",
+          "foreground": "#1a1c1f",
+          "color": "#fff",
+          "ratio": 17.07581164489872
+        },
+        {
+          "background": "surface",
+          "foreground": "#1a1c1f",
+          "color": "#fcfcfc",
+          "ratio": 16.643960959716157
+        },
+        {
+          "background": "surface-raised",
+          "foreground": "#1a1c1f",
+          "color": "#fff",
+          "ratio": 17.07581164489872
+        },
+        {
+          "background": "muted",
+          "foreground": "#1a1c1f",
+          "color": "#f7f7f7",
+          "ratio": 15.93922705594166
+        },
+        {
+          "background": "control",
+          "foreground": "#1a1c1f",
+          "color": "#fff",
+          "ratio": 17.07581164489872
+        },
+        {
+          "background": "control-hover",
+          "foreground": "#1a1c1f",
+          "color": "#f2f2f2",
+          "ratio": 15.253141426998662
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "label": "Original theme",
+      "scheme": "dark",
+      "oldOperationalNoteRatio": 1.092173483881407,
+      "oldSecondarySurfaceRatio": 7.340920136737638,
+      "correctedMinimumRatio": 13.19811185826915,
+      "pairs": [
+        {
+          "background": "background",
+          "foreground": "#fff",
+          "color": "#181818",
+          "ratio": 17.756264715186326
+        },
+        {
+          "background": "surface",
+          "foreground": "#fff",
+          "color": "#212121",
+          "ratio": 16.102191704447957
+        },
+        {
+          "background": "surface-raised",
+          "foreground": "#fff",
+          "color": "#282828",
+          "ratio": 14.743254567235402
+        },
+        {
+          "background": "muted",
+          "foreground": "#fff",
+          "color": "#282828",
+          "ratio": 14.743254567235402
+        },
+        {
+          "background": "control",
+          "foreground": "#fff",
+          "color": "#212121",
+          "ratio": 16.102191704447957
+        },
+        {
+          "background": "control-hover",
+          "foreground": "#fff",
+          "color": "#303030",
+          "ratio": 13.19811185826915
+        }
+      ]
+    },
+    {
+      "theme": "codex-classic",
+      "label": "Classic",
+      "scheme": "light",
+      "oldOperationalNoteRatio": 1.0442138066859268,
+      "oldSecondarySurfaceRatio": 4.4273511836553485,
+      "correctedMinimumRatio": 15.253141426998662,
+      "pairs": [
+        {
+          "background": "background",
+          "foreground": "#1a1c1f",
+          "color": "#fff",
+          "ratio": 17.07581164489872
+        },
+        {
+          "background": "surface",
+          "foreground": "#1a1c1f",
+          "color": "#fcfcfc",
+          "ratio": 16.643960959716157
+        },
+        {
+          "background": "surface-raised",
+          "foreground": "#1a1c1f",
+          "color": "#fff",
+          "ratio": 17.07581164489872
+        },
+        {
+          "background": "muted",
+          "foreground": "#1a1c1f",
+          "color": "#f7f7f7",
+          "ratio": 15.93922705594166
+        },
+        {
+          "background": "control",
+          "foreground": "#1a1c1f",
+          "color": "#fff",
+          "ratio": 17.07581164489872
+        },
+        {
+          "background": "control-hover",
+          "foreground": "#1a1c1f",
+          "color": "#f2f2f2",
+          "ratio": 15.253141426998662
+        }
+      ]
+    },
+    {
+      "theme": "codex-classic",
+      "label": "Classic",
+      "scheme": "dark",
+      "oldOperationalNoteRatio": 1.092173483881407,
+      "oldSecondarySurfaceRatio": 7.340920136737638,
+      "correctedMinimumRatio": 13.19811185826915,
+      "pairs": [
+        {
+          "background": "background",
+          "foreground": "#fff",
+          "color": "#181818",
+          "ratio": 17.756264715186326
+        },
+        {
+          "background": "surface",
+          "foreground": "#fff",
+          "color": "#212121",
+          "ratio": 16.102191704447957
+        },
+        {
+          "background": "surface-raised",
+          "foreground": "#fff",
+          "color": "#282828",
+          "ratio": 14.743254567235402
+        },
+        {
+          "background": "muted",
+          "foreground": "#fff",
+          "color": "#282828",
+          "ratio": 14.743254567235402
+        },
+        {
+          "background": "control",
+          "foreground": "#fff",
+          "color": "#212121",
+          "ratio": 16.102191704447957
+        },
+        {
+          "background": "control-hover",
+          "foreground": "#fff",
+          "color": "#303030",
+          "ratio": 13.19811185826915
+        }
+      ]
+    },
+    {
+      "theme": "default",
+      "label": "Neutral",
+      "scheme": "light",
+      "oldOperationalNoteRatio": 1.090230993517392,
+      "oldSecondarySurfaceRatio": 4.415089522426074,
+      "correctedMinimumRatio": 15.631611037444465,
+      "pairs": [
+        {
+          "background": "background",
+          "foreground": "#1c1c1c",
+          "color": "#f7f7f4",
+          "ratio": 15.8779052498055
+        },
+        {
+          "background": "surface",
+          "foreground": "#1c1c1c",
+          "color": "#fff",
+          "ratio": 17.04206683163051
+        },
+        {
+          "background": "surface-raised",
+          "foreground": "#1c1c1c",
+          "color": "#fff",
+          "ratio": 17.04206683163051
+        },
+        {
+          "background": "muted",
+          "foreground": "#1c1c1c",
+          "color": "#f5f5f5",
+          "ratio": 15.631611037444465
+        },
+        {
+          "background": "control",
+          "foreground": "#1c1c1c",
+          "color": "#fff",
+          "ratio": 17.04206683163051
+        },
+        {
+          "background": "control-hover",
+          "foreground": "#1c1c1c",
+          "color": "#f6f6f6",
+          "ratio": 15.769298025787888
+        }
+      ]
+    },
+    {
+      "theme": "default",
+      "label": "Neutral",
+      "scheme": "dark",
+      "oldOperationalNoteRatio": 1.1507326116873822,
+      "oldSecondarySurfaceRatio": 6.852050608857496,
+      "correctedMinimumRatio": 11.487441861434766,
+      "pairs": [
+        {
+          "background": "background",
+          "foreground": "#f4f4f4",
+          "color": "#171717",
+          "ratio": 16.30001240976405
+        },
+        {
+          "background": "surface",
+          "foreground": "#f4f4f4",
+          "color": "#202020",
+          "ratio": 14.813845995508467
+        },
+        {
+          "background": "surface-raised",
+          "foreground": "#f4f4f4",
+          "color": "#242424",
+          "ratio": 14.113447513629875
+        },
+        {
+          "background": "muted",
+          "foreground": "#f4f4f4",
+          "color": "#2b2b2b",
+          "ratio": 12.873404164487972
+        },
+        {
+          "background": "control",
+          "foreground": "#f4f4f4",
+          "color": "#292929",
+          "ratio": 13.22723831651939
+        },
+        {
+          "background": "control-hover",
+          "foreground": "#f4f4f4",
+          "color": "#333",
+          "ratio": 11.487441861434766
+        }
+      ]
+    },
+    {
+      "theme": "dark-pixel",
+      "label": "Dark pixel",
+      "scheme": "dark",
+      "oldOperationalNoteRatio": 1.2776940283255829,
+      "oldSecondarySurfaceRatio": 6.692798007619586,
+      "correctedMinimumRatio": 11.505801501978514,
+      "pairs": [
+        {
+          "background": "background",
+          "foreground": "#e8f0da",
+          "color": "#121315",
+          "ratio": 15.851670351095226
+        },
+        {
+          "background": "surface",
+          "foreground": "#e8f0da",
+          "color": "#181c18",
+          "ratio": 14.700893870177469
+        },
+        {
+          "background": "surface-raised",
+          "foreground": "#e8f0da",
+          "color": "#1d221c",
+          "ratio": 13.798192890591583
+        },
+        {
+          "background": "muted",
+          "foreground": "#e8f0da",
+          "color": "#26321d",
+          "ratio": 11.505801501978514
+        },
+        {
+          "background": "control",
+          "foreground": "#e8f0da",
+          "color": "#1b211a",
+          "ratio": 14.000571483158957
+        },
+        {
+          "background": "control-hover",
+          "foreground": "#e8f0da",
+          "color": "#26321d",
+          "ratio": 11.505801501978514
+        }
+      ]
+    },
+    {
+      "theme": "scientific-blue",
+      "label": "Scientific blue",
+      "scheme": "light",
+      "oldOperationalNoteRatio": 1.106126028245612,
+      "oldSecondarySurfaceRatio": 4.845106247500292,
+      "correctedMinimumRatio": 14.229412790970512,
+      "pairs": [
+        {
+          "background": "background",
+          "foreground": "#10233f",
+          "color": "#f7faff",
+          "ratio": 15.044791925721512
+        },
+        {
+          "background": "surface",
+          "foreground": "#10233f",
+          "color": "#fff",
+          "ratio": 15.739523854743522
+        },
+        {
+          "background": "surface-raised",
+          "foreground": "#10233f",
+          "color": "#fff",
+          "ratio": 15.739523854743522
+        },
+        {
+          "background": "muted",
+          "foreground": "#10233f",
+          "color": "#edf4ff",
+          "ratio": 14.229412790970512
+        },
+        {
+          "background": "control",
+          "foreground": "#10233f",
+          "color": "#fff",
+          "ratio": 15.739523854743522
+        },
+        {
+          "background": "control-hover",
+          "foreground": "#10233f",
+          "color": "#edf4ff",
+          "ratio": 14.229412790970512
+        }
+      ]
+    },
+    {
+      "theme": "scientific-blue",
+      "label": "Scientific blue",
+      "scheme": "dark",
+      "oldOperationalNoteRatio": 1.1968930356357508,
+      "oldSecondarySurfaceRatio": 8.162280745940409,
+      "correctedMinimumRatio": 10.794749035847435,
+      "pairs": [
+        {
+          "background": "background",
+          "foreground": "#edf5ff",
+          "color": "#101722",
+          "ratio": 16.362121519475313
+        },
+        {
+          "background": "surface",
+          "foreground": "#edf5ff",
+          "color": "#172131",
+          "ratio": 14.715788302734992
+        },
+        {
+          "background": "surface-raised",
+          "foreground": "#edf5ff",
+          "color": "#1c293b",
+          "ratio": 13.363514038057643
+        },
+        {
+          "background": "muted",
+          "foreground": "#edf5ff",
+          "color": "#202f45",
+          "ratio": 12.294990332965254
+        },
+        {
+          "background": "control",
+          "foreground": "#edf5ff",
+          "color": "#1c293b",
+          "ratio": 13.363514038057643
+        },
+        {
+          "background": "control-hover",
+          "foreground": "#edf5ff",
+          "color": "#263852",
+          "ratio": 10.794749035847435
+        }
+      ]
+    },
+    {
+      "theme": "sticker-pop",
+      "label": "Sticker pop",
+      "scheme": "light",
+      "oldOperationalNoteRatio": 1.1011196178294453,
+      "oldSecondarySurfaceRatio": 4.582363977469698,
+      "correctedMinimumRatio": 15.662312038266217,
+      "pairs": [
+        {
+          "background": "background",
+          "foreground": "#261526",
+          "color": "#fff8fc",
+          "ratio": 16.4943271078598
+        },
+        {
+          "background": "surface",
+          "foreground": "#261526",
+          "color": "#fff",
+          "ratio": 17.246079045901215
+        },
+        {
+          "background": "surface-raised",
+          "foreground": "#261526",
+          "color": "#fff",
+          "ratio": 17.246079045901215
+        },
+        {
+          "background": "muted",
+          "foreground": "#261526",
+          "color": "#fff0f8",
+          "ratio": 15.662312038266217
+        },
+        {
+          "background": "control",
+          "foreground": "#261526",
+          "color": "#fff",
+          "ratio": 17.246079045901215
+        },
+        {
+          "background": "control-hover",
+          "foreground": "#261526",
+          "color": "#fff0f8",
+          "ratio": 15.662312038266217
+        }
+      ]
+    },
+    {
+      "theme": "sticker-pop",
+      "label": "Sticker pop",
+      "scheme": "dark",
+      "oldOperationalNoteRatio": 1.1287150476314325,
+      "oldSecondarySurfaceRatio": 8.15712975537199,
+      "correctedMinimumRatio": 12.237898738642437,
+      "pairs": [
+        {
+          "background": "background",
+          "foreground": "#fff0f8",
+          "color": "#20151d",
+          "ratio": 16.074786476552372
+        },
+        {
+          "background": "surface",
+          "foreground": "#fff0f8",
+          "color": "#2b1d28",
+          "ratio": 14.568354498885816
+        },
+        {
+          "background": "surface-raised",
+          "foreground": "#fff0f8",
+          "color": "#332131",
+          "ratio": 13.596720065528263
+        },
+        {
+          "background": "muted",
+          "foreground": "#fff0f8",
+          "color": "#382438",
+          "ratio": 12.907026028807694
+        },
+        {
+          "background": "control",
+          "foreground": "#fff0f8",
+          "color": "#2b1d28",
+          "ratio": 14.568354498885816
+        },
+        {
+          "background": "control-hover",
+          "foreground": "#fff0f8",
+          "color": "#40263b",
+          "ratio": 12.237898738642437
+        }
+      ]
+    }
+  ],
+  "fixedResults": [
+    {
+      "label": "Filtros e Fechar",
+      "foreground": "#fff",
+      "background": "#163c4d",
+      "ratio": 11.747446830627165
+    },
+    {
+      "label": "Aba selecionada",
+      "foreground": "#005560",
+      "background": "#e3f2f3",
+      "ratio": 7.3982916794701765
+    },
+    {
+      "label": "Agrupamentos e tubarão",
+      "foreground": "#fff",
+      "background": "#163c4d",
+      "ratio": 11.747446830627165
+    },
+    {
+      "label": "Código dos postos",
+      "foreground": "#fff",
+      "background": "#183a4b",
+      "ratio": 12.02983114007143
+    },
+    {
+      "label": "Aviso cartográfico",
+      "foreground": "#6d541c",
+      "background": "#fff5df",
+      "ratio": 6.60224332575611
+    },
+    {
+      "label": "Medição",
+      "foreground": "#143644",
+      "background": "#fff",
+      "ratio": 12.797993478614371
+    },
+    {
+      "label": "Recorte vazio",
+      "foreground": "#173c4c",
+      "background": "#fff",
+      "ratio": 11.750646644776856
+    },
+    {
+      "label": "Atribuição e escala",
+      "foreground": "#333",
+      "background": "#fff",
+      "ratio": 12.63465434445799
+    },
+    {
+      "label": "Link da atribuição",
+      "foreground": "#005a7a",
+      "background": "#fff",
+      "ratio": 7.654473013791301
+    },
+    {
+      "label": "Tooltip",
+      "foreground": "#222",
+      "background": "#fff",
+      "ratio": 15.909984431773273
+    }
+  ]
+}
