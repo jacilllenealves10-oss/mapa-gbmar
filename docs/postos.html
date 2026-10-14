@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#121d2a">
-<title>GBMar | Localização dos Postos de Guarda-Vidas · v3</title>
+<title>GBMar | Localização dos Postos de Guarda-Vidas · v4</title>
 <meta name="description" content="Mapa de referência com 16 postos de guarda-vidas do GBMar/CBMPE em Olinda, Recife e Jaboatão.">
 <link rel="preconnect" href="https://unpkg.com">
 <link rel="stylesheet" href="./assets/leaflet-1.9.4.css">
@@ -15,7 +15,7 @@
 html,body{max-width:100%;overflow-x:hidden}
 .layout,.map-area,.sidebar{min-width:0}
 .map-area{isolation:isolate;overflow:hidden;contain:layout paint;min-width:0}
-#map{position:relative;display:block;overflow:hidden;isolation:isolate;z-index:0;max-width:100%;touch-action:pan-y;overscroll-behavior:contain}
+#map{position:relative;display:block;overflow:hidden;isolation:isolate;z-index:0;max-width:100%;touch-action:none;overscroll-behavior:contain}
 #map .leaflet-container{max-width:100%}
 .floating{pointer-events:none;z-index:801}
 @media(max-width:900px){
@@ -23,7 +23,8 @@ html,body{max-width:100%;overflow-x:hidden}
   #map{width:100%;height:100%;min-height:0}
   .layout{width:100%;min-height:0;overflow:visible}
   .sidebar{width:100%;max-width:100%;position:relative;z-index:1;background:#fff}
-  #map .leaflet-control-zoom{display:none}
+  #map .leaflet-control-zoom{display:block;margin:12px 0 0 12px}
+  #map .leaflet-control-zoom a{width:34px;height:34px;line-height:32px;font-size:22px}
   .floating{top:8px;right:8px}
 }</style>
 </head>
@@ -57,7 +58,7 @@ function showEmbed(p){
 try{
 if(!window.L)throw Error("Biblioteca do mapa não carregada");
 const touchDevice=window.matchMedia("(pointer: coarse)").matches;
-map=L.map("map",{scrollWheelZoom:false,zoomControl:true,dragging:!touchDevice,touchZoom:!touchDevice,doubleClickZoom:!touchDevice,boxZoom:!touchDevice,keyboard:!touchDevice,trackResize:true}).setView([-8.111,-34.89],11);
+map=L.map("map",{scrollWheelZoom:!touchDevice,zoomControl:true,dragging:true,touchZoom:true,doubleClickZoom:true,boxZoom:true,keyboard:true,trackResize:true}).setView([-8.111,-34.89],11);
 let tileErrors=0;
 const base=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'}).addTo(map);
 base.on('tileerror',()=>{if(++tileErrors===4){map.removeLayer(base);const alt=L.tileLayer('https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(map);let err=0;alt.on('tileerror',()=>{if(++err===4)showEmbed(pts.find(p=>p.id===selected));});}});
