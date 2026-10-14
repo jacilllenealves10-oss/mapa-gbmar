@@ -26,12 +26,30 @@ html,body{max-width:100%;overflow-x:hidden}
   #map .leaflet-control-zoom{display:block;margin:12px 0 0 12px}
   #map .leaflet-control-zoom a{width:34px;height:34px;line-height:32px;font-size:22px}
   .floating{top:8px;right:8px}
-}</style>
+}
+/* Apresentação do autor: independente das camadas e controles do mapa. */
+.top .author-credit{margin-top:6px;color:#f0dcae;font-size:12px;font-weight:600}
+.author-area{padding:23px clamp(16px,3vw,38px);background:#f3f6fa;border-top:1px solid #dce4ed}
+.author-panel{max-width:1050px;margin:0 auto;padding:21px 24px;border:1px solid #dce4ed;border-left:4px solid #b52c3b;border-radius:12px;background:#fff;box-shadow:0 3px 15px rgba(27,49,68,.045)}
+.author-eyebrow{margin:0 0 6px;color:#9c3440;font-size:11px;font-weight:800;letter-spacing:1.25px;text-transform:uppercase}
+.author-panel h2{font-size:19px;line-height:1.4;color:#21364b;margin:0 0 8px}
+.author-panel p{font-size:14px;line-height:1.65;color:#455a6e;margin:0;max-width:850px}
+.author-panel p + p{margin-top:5px}
+@media(max-width:900px){.author-area{padding:17px 16px}.author-panel{padding:17px 16px}.author-panel h2{font-size:17px}.author-panel p{font-size:13px}}
+</style>
 </head>
 <body>
-<header class="top"><div class="brand"><div class="crest" aria-hidden="true">BM</div><div><small>CBMPE · GRUPAMENTO DE BOMBEIROS MARÍTIMO</small><h1>Localização dos postos de guarda-vidas</h1><p>Atlas de consulta geográfica · 16 referências · revisão 13/10/2026</p></div></div><div class="top-actions"><button class="btn" id="me">◎ Minha localização</button><button class="btn" id="whole">↗ Ver todos</button><button class="btn" onclick="window.print()">Imprimir / PDF</button></div></header>
+<header class="top"><div class="brand"><div class="crest" aria-hidden="true">BM</div><div><small>CBMPE · GRUPAMENTO DE BOMBEIROS MARÍTIMO</small><h1>Localização dos postos de guarda-vidas</h1><p>Atlas de consulta geográfica · 16 referências · revisão 13/10/2026</p><p class="author-credit">Desenvolvido por Asp BM BRAGANÇA</p></div></div><div class="top-actions"><button class="btn" id="me">◎ Minha localização</button><button class="btn" id="whole">↗ Ver todos</button><button class="btn" onclick="window.print()">Imprimir / PDF</button></div></header>
 <section class="warning" role="note"><strong>AVISO SOBRE PRECISÃO:</strong> as posições são <b>referências geográficas aproximadas</b>, inferidas de coordenadas dos registros operacionais e da grade de postos. Não representam levantamento GPS oficial da estrutura, área de responsabilidade ou confirmação de posto ativo hoje. Em emergência, ligue <b>193</b>.</section>
 <main class="layout"><section class="sidebar" aria-label="Consulta de postos"><h2>Consultar postos <span id="n" style="color:#a72f3b">16</span></h2><p class="sub">Escolha um posto para aproximar o mapa ou abrir a referência no Google Maps. As posições devem ser verificadas em campo.</p><label class="sr" for="search">Pesquisar posto</label><input class="search" id="search" placeholder="Buscar número, praia, bairro ou cidade…" autocomplete="off"><div class="filters" id="filters"><button class="chip active" data-city="Todas">Todos · 16</button><button class="chip" data-city="Olinda">Olinda · 2</button><button class="chip" data-city="Recife">Recife · 10</button><button class="chip" data-city="Jaboatão dos Guararapes">Jaboatão · 4</button></div><div id="stations" aria-live="polite"></div></section><section class="map-area"><div id="map" role="application" aria-label="Mapa geográfico interativo dos 16 postos"></div><div class="floating"><span class="legend-dot" style="background:#2974a6"></span>Olinda <span class="legend-dot" style="background:#b52c3b"></span>Recife <span class="legend-dot" style="background:#ba7a25"></span>Jaboatão</div></section></main>
+<section class="author-area" aria-labelledby="sobre-autor-titulo">
+  <div class="author-panel">
+    <p class="author-eyebrow">Desenvolvimento do projeto</p>
+    <h2 id="sobre-autor-titulo">Sobre o autor</h2>
+    <p><strong>Asp BM BRAGANÇA</strong> — Aspirante a Oficial do Corpo de Bombeiros Militar de Pernambuco (CBMPE), em atuação no Grupamento de Bombeiros Marítimo (GBMar).</p>
+    <p>Técnico em Desenvolvimento de Sistemas, com formação de 1.200 horas.</p>
+  </div>
+</section>
 <footer class="foot"><b>Fonte:</b> cadastro geográfico do Mapa GBMar (grade do Mapa de Força de 04/10/2026 e referência adicional do Posto 05 de Jaboatão). Sistema WGS84; posição de referência por medoide de registros vinculados ao posto. <b>Não constitui documentação cartográfica oficial.</b> Rotas externas são abertas no Google Maps e dependem de conexão. As condições de mar e funcionamento dos postos variam.</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script>if(!window.L){document.write('<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"><\/script>')}</script>
