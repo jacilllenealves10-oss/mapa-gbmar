@@ -84,6 +84,9 @@ def main():
     path = docs / 'index.html'
     raw = path.read_bytes()
     html = raw.decode()
+    if '<style id="gbmar-readable-themes">' in html:
+        from improve_theme_contrast import restore_base
+        html = restore_base(html)
     manifest_path = docs / 'data-app-build.json'
     manifest = json.loads(manifest_path.read_text())
     snapshot = (docs / manifest['snapshot']['path']).read_bytes()
