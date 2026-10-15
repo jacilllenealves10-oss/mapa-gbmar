@@ -36,11 +36,23 @@ html,body{max-width:100%;overflow-x:hidden}
 .author-panel p{font-size:14px;line-height:1.65;color:#455a6e;margin:0;max-width:850px}
 .author-panel p + p{margin-top:5px}
 @media(max-width:900px){.author-area{padding:17px 16px}.author-panel{padding:17px 16px}.author-panel h2{font-size:17px}.author-panel p{font-size:13px}}
+/* Seletor fora do mapa: não cobre zoom, legenda ou postos no celular. */
+.map-toolbar{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;padding:12px clamp(16px,3vw,38px);background:#fff;border-bottom:1px solid #dbe3eb}
+.map-toolbar label{font-size:13px;font-weight:800;color:#273a4f}
+.map-toolbar select{font:inherit;font-size:13px;min-height:44px;max-width:100%;padding:9px 30px 9px 12px;border:1px solid #aebdcb;border-radius:9px;background:#f8fafc;color:#24364a}
+.map-toolbar select:focus-visible{outline:3px solid #2974a6;outline-offset:2px}
+.map-toolbar p{flex:1 1 260px;font-size:12px;line-height:1.5;color:#52677b;margin:0}
+@media print{.map-toolbar{display:none}}
 </style>
 </head>
 <body>
 <header class="top"><div class="brand"><div class="crest" aria-hidden="true">BM</div><div><small>CBMPE · GRUPAMENTO DE BOMBEIROS MARÍTIMO</small><h1>Localização dos postos de guarda-vidas</h1><p>Atlas de consulta geográfica · 16 referências · revisão 13/10/2026</p><p class="author-credit">Desenvolvido por Asp BM BRAGANÇA</p></div></div><div class="top-actions"><button class="btn" id="me">◎ Minha localização</button><button class="btn" id="whole">↗ Ver todos</button><button class="btn" onclick="window.print()">Imprimir / PDF</button></div></header>
 <section class="warning" role="note"><strong>AVISO SOBRE PRECISÃO:</strong> as posições são <b>referências geográficas aproximadas</b>, inferidas de coordenadas dos registros operacionais e da grade de postos. Não representam levantamento GPS oficial da estrutura, área de responsabilidade ou confirmação de posto ativo hoje. Em emergência, ligue <b>193</b>.</section>
+<section class="map-toolbar" aria-label="Visualização do mapa">
+<label for="map-style">Tipo de mapa</label>
+<select id="map-style" aria-describedby="map-status"><option value="osm">Ruas · OpenStreetMap</option><option value="satellite">Satélite · Esri</option><option value="light">Mapa claro · CARTO</option></select>
+<p id="map-status" role="status" aria-live="polite">Escolha a base do mapa. Os postos permanecem na mesma posição.</p>
+</section>
 <main class="layout"><section class="sidebar" aria-label="Consulta de postos"><h2>Consultar postos <span id="n" style="color:#a72f3b">16</span></h2><p class="sub">Escolha um posto para aproximar o mapa ou abrir a referência no Google Maps. As posições devem ser verificadas em campo.</p><label class="sr" for="search">Pesquisar posto</label><input class="search" id="search" placeholder="Buscar número, praia, bairro ou cidade…" autocomplete="off"><div class="filters" id="filters"><button class="chip active" data-city="Todas">Todos · 16</button><button class="chip" data-city="Olinda">Olinda · 2</button><button class="chip" data-city="Recife">Recife · 10</button><button class="chip" data-city="Jaboatão dos Guararapes">Jaboatão · 4</button></div><div id="stations" aria-live="polite"></div></section><section class="map-area"><div id="map" role="application" aria-label="Mapa geográfico interativo dos 16 postos"></div><div class="floating"><span class="legend-dot" style="background:#2974a6"></span>Olinda <span class="legend-dot" style="background:#b52c3b"></span>Recife <span class="legend-dot" style="background:#ba7a25"></span>Jaboatão</div></section></main>
 <section class="author-area" aria-labelledby="sobre-autor-titulo">
   <div class="author-panel">
@@ -64,6 +76,33 @@ let selected=-1,filter="Todas",query="";
 const elem=document.getElementById("stations"),total=document.getElementById("n");
 let map, markers=[];
 let embedMode=false;
+const mapStyle=document.getElementById("map-style"),mapStatus=document.getElementById("map-status");
+const BASEMAPS={
+ osm:{name:"Ruas · OpenStreetMap",url:"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'},
+ satellite:{name:"Satélite · Esri",url:"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",attribution:'Tiles &copy; Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community'},
+ light:{name:"Mapa claro · CARTO",url:"https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>'}
+};
+let currentBase=null;
+function selectBasemap(key,failed=new Set(),notice=""){
+ if(!map||embedMode||!Object.prototype.hasOwnProperty.call(BASEMAPS,key))return;
+ const def=BASEMAPS[key];
+ if(currentBase)map.removeLayer(currentBase);
+ const layer=L.tileLayer(def.url,{maxZoom:19,maxNativeZoom:19,attribution:def.attribution});
+ currentBase=layer;
+ mapStyle.value=key;
+ mapStatus.textContent=notice+(key==="satellite"?"Imagens de datas variadas; não são ao vivo.":"Os postos permanecem na mesma posição ao trocar o mapa.");
+ let errors=0;
+ layer.on("tileload",()=>{errors=0});
+ layer.on("tileerror",()=>{
+  if(currentBase!==layer||++errors<4)return;
+  failed.add(key);
+  const fallback=["osm","light"].find(k=>!failed.has(k));
+  if(fallback)selectBasemap(fallback,failed,def.name+" indisponível. Exibindo "+BASEMAPS[fallback].name+". ");
+  else mapStatus.textContent="Não foi possível carregar as bases do mapa. Verifique a conexão ou tente outra opção. A lista de postos continua disponível.";
+ });
+ layer.addTo(map);
+}
+mapStyle.addEventListener("change",()=>selectBasemap(mapStyle.value));
 function showEmbed(p){
  const center=p||{lat:-8.116,lon:-34.89};
  const delta=p?0.007:0.135;
@@ -72,14 +111,14 @@ function showEmbed(p){
  const m=document.getElementById('map');
  m.innerHTML='<iframe title="Mapa OpenStreetMap — localização de referência" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" style="width:100%;height:100%;border:0" src="https://www.openstreetmap.org/export/embed.html?bbox='+bbox+'&layer=mapnik'+marker+'"></iframe>';
  embedMode=true;
+ mapStyle.value="osm";mapStyle.disabled=true;
+ mapStatus.textContent="Visualização simplificada OpenStreetMap. Recarregue a página para tentar habilitar as outras bases.";
 }
 try{
 if(!window.L)throw Error("Biblioteca do mapa não carregada");
 const touchDevice=window.matchMedia("(pointer: coarse)").matches;
 map=L.map("map",{scrollWheelZoom:!touchDevice,zoomControl:true,dragging:true,touchZoom:true,doubleClickZoom:true,boxZoom:true,keyboard:true,trackResize:true}).setView([-8.111,-34.89],11);
-let tileErrors=0;
-const base=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'}).addTo(map);
-base.on('tileerror',()=>{if(++tileErrors===4){map.removeLayer(base);const alt=L.tileLayer('https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(map);let err=0;alt.on('tileerror',()=>{if(++err===4)showEmbed(pts.find(p=>p.id===selected));});}});
+selectBasemap("osm");
 pts.forEach(p=>{
  const col=COLORS[p.city];
  const ico=L.divIcon({className:"",html:'<div class="pin" style="background:'+col+'"><span>'+p.num+'</span></div>',iconSize:[31,36],iconAnchor:[15,29],popupAnchor:[0,-26]});
